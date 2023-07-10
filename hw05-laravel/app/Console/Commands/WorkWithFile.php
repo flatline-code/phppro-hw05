@@ -30,10 +30,8 @@ class WorkWithFile extends Command
 
         if (is_numeric($age) === false) return;
 
-        if ($age < 18) {
-            if ($this->confirm('Are you sure you want to continue?') === false) {
-                return;
-            }
+        if ($age < 18 && $this->confirm('Are you sure you want to continue?') === false) {
+            return;
         };
 
         $option = $this->anticipate('Please type an option, read or write?', ['read', 'write']);
