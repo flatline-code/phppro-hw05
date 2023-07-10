@@ -30,7 +30,7 @@ class WorkWithFile extends Command
 
         if (is_numeric($age) === false) return;
 
-        if ($age < 18 && $this->confirm('Are you sure you want to continue?') === false) {
+        if ($this->isAdult($age) === false && $this->confirm('Are you sure you want to continue?') === false) {
             return;
         };
 
@@ -72,5 +72,9 @@ class WorkWithFile extends Command
         }
 
         $this->error('Failed to write data to file.');
+    }
+
+    private function isAdult(int $age): bool {
+        return $age > 18;
     }
 }
